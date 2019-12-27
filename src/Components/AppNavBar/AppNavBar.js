@@ -33,7 +33,7 @@ export default function AppNavBar(props) {
 
                     <Typography variant="h6" color="inherit" noWrap className={classes.title}>{props.heading}</Typography>
 
-                    <Button color="inherit">Logout</Button>
+                    <Button color="inherit">Log out</Button>
 
                 </Toolbar>
 
