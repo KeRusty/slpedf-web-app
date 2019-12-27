@@ -47,21 +47,35 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignUp() {
+
     const classes = useStyles();
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(e.target.email.value)
+        console.log(e.target.password.value)
+        console.log(e.target.confirmPassword.value)
+    }
 
     return (
         <Container component="main" maxWidth="xs">
+
             <CssBaseline />
+
             <div className={classes.paper}>
+
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign up
-        </Typography>
-                <form className={classes.form} noValidate>
+
+                <Typography component="h1" variant="h5">Sign up</Typography>
+
+                <form className={classes.form} noValidate onSubmit={onSubmit}>
+
                     <Grid container spacing={2}>
+
                         <Grid item xs={12} sm={6}>
+
                             <TextField
                                 autoComplete="fname"
                                 name="firstName"
@@ -73,7 +87,9 @@ export default function SignUp() {
                                 autoFocus
                             />
                         </Grid>
+
                         <Grid item xs={12} sm={6}>
+
                             <TextField
                                 variant="outlined"
                                 required
@@ -83,8 +99,11 @@ export default function SignUp() {
                                 name="lastName"
                                 autoComplete="lname"
                             />
+
                         </Grid>
+
                         <Grid item xs={12}>
+
                             <TextField
                                 variant="outlined"
                                 required
@@ -94,8 +113,11 @@ export default function SignUp() {
                                 name="email"
                                 autoComplete="email"
                             />
+
                         </Grid>
+
                         <Grid item xs={12}>
+
                             <TextField
                                 variant="outlined"
                                 required
@@ -106,35 +128,48 @@ export default function SignUp() {
                                 id="password"
                                 autoComplete="current-password"
                             />
+
                         </Grid>
+
                         <Grid item xs={12}>
-                            <FormControlLabel
-                                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                label="I want to receive inspiration, marketing promotions and updates via email."
+
+                            <TextField
+                                variant="outlined"
+                                required
+                                fullWidth
+                                name="confirmPassword"
+                                label="Confirm Password"
+                                type="password"
+                                id="confirmPassword"
+                                autoComplete="current-password"
                             />
+
                         </Grid>
+
                     </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                    >
-                        Sign Up
-          </Button>
+
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>Sign Up</Button>
+
                     <Grid container justify="flex-end">
+
                         <Grid item>
-                            <Link href="#" variant="body2">
+
+                            <Link href="/login" variant="body2">
                                 Already have an account? Sign in
-              </Link>
+                            </Link>
+
                         </Grid>
+
                     </Grid>
+
                 </form>
+
             </div>
+
             <Box mt={5}>
                 <Copyright />
             </Box>
+
         </Container>
     );
 }

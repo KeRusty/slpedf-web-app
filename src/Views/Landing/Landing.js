@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import logo from '../../Assests/img/logo.svg';
-import { Link } from "react-router-dom";
 import './Landing.css'
-
-import Login from "../../Components/Login/Login";
 
 import Button from '@material-ui/core/Button';
 
