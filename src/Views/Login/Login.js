@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import Fire from "../../Config/Firebase";
+import StorageKeys from "../../Config/StorageKeys";
 import Copyright from '../../Components/Copyright/Copyright';
 import { useSnackbar } from 'notistack';
 
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Login() {
+export default function Login(props) {
 
     const classes = useStyles();
 
@@ -50,10 +51,16 @@ export default function Login() {
 
         Fire.auth().signInWithEmailAndPassword(email, password)
             .then(user => {
+                console.log(user)
+                localStorage.setItem(StorageKeys.token, user.user.accessToken);
+                localStorage.setItem(StorageKeys.user, JSON.stringify(user));
                 enqueueSnackbar("Welcome User", { variant: 'success' });
+                setTimeout(() => closeSnackbar, 1000)
+                props.history.push("/dashboard")
             })
             .catch(error => {
                 enqueueSnackbar(error.message, { variant: 'error' });
+                setTimeout(() => closeSnackbar, 10000)
             });
     }
 
@@ -68,9 +75,7 @@ export default function Login() {
                     <LockOutlinedIcon />
                 </Avatar>
 
-                <Typography component="h1" variant="h4">
-                    Sign In
-                </Typography>
+                <Typography component="h1" variant="h4">Sign In</Typography>
 
                 <form className={classes.form} noValidate onSubmit={onSubmit}>
 
