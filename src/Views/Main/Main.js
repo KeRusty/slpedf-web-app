@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router-dom";
 
 // Routes
 import Landing from '../Landing/Landing';
-import Login from '../../Components/Login/Login';
-import Register from "../../Components/Register/Register"
+import Login from '../Login/Login';
+import Register from "../Register/Register"
 
 class Main extends Component {
     constructor(props) {
