@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
 
     const classes = useStyles();
 
@@ -63,9 +63,12 @@ export default function SignUp() {
                             lastName: lastName
                         });
                     enqueueSnackbar("User Created", { variant: 'success' });
+                    props.history.push("/login")
+                    setTimeout(() => closeSnackbar, 1000)
                 })
                 .catch(error => {
                     enqueueSnackbar(error.message, { variant: 'error' });
+                    setTimeout(() => closeSnackbar, 10000)
                 });
 
         } else {
