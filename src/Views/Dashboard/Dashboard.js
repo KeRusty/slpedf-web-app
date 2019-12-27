@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import AppNavBar from "../../Components/AppNavBar/AppNavBar";
+import Cards from "../../Components/Cards/Cards"
 import Copyright from "../../Components/Copyright/Copyright";
 
 const useStyles = makeStyles(theme => ({
@@ -42,9 +43,17 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const cards = [1, 2, 3];
+const cardData = [
+    { heading: "User Registration", content: "Users can be registered here." },
+    { heading: "Client Registration", content: "Clients can be registered here." },
+    { heading: "Workshops", content: "Manage Ongoing workshops and future workshops here." },
+    { heading: "Donations", content: "Manage Donations from internal and external donors" },
+    { heading: "Events", content: "Manage Events organized by SLPEDF members." },
+    { heading: "Reports", content: "View Reports here." }
+];
 
-export default function Album() {
+
+export default function Dashboard() {
     const classes = useStyles();
 
     return (
@@ -60,13 +69,11 @@ export default function Album() {
                     <Container maxWidth="sm">
 
                         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                            Album layout
+                            Sri lanka Podujana Entreprenuer Development Front
                         </Typography>
 
                         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                            Something short and leading about the collection below—its contents, the creator, etc.
-                            Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-                            entirely.
+                            SLPEDF Database
                         </Typography>
 
                         <div className={classes.heroButtons}>
@@ -96,51 +103,7 @@ export default function Album() {
 
                 </div>
 
-                <Container className={classes.cardGrid} maxWidth="md">
-                    {/* End hero unit */}
-                    <Grid container spacing={4}>
-
-                        {cards.map(card => (
-                            <Grid item key={card} xs={12} sm={6} md={4}>
-
-                                <Card className={classes.card}>
-
-                                    <CardMedia
-                                        className={classes.cardMedia}
-                                        image="https://source.unsplash.com/random"
-                                        title="Image title"
-                                    />
-
-                                    <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Heading
-                                         </Typography>
-
-                                        <Typography>
-                                            This is a media card. You can use this section to describe the content.
-                                        </Typography>
-
-                                    </CardContent>
-
-                                    <CardActions>
-
-                                        <Button size="small" color="primary">
-                                            View
-                                        </Button>
-
-                                        <Button size="small" color="primary">
-                                            Edit
-                                         </Button>
-
-                                    </CardActions>
-
-                                </Card>
-
-                            </Grid>
-                        ))}
-                    </Grid>
-
-                </Container>
+                <Cards cardData={cardData} />
 
             </main>
             {/* Footer */}
