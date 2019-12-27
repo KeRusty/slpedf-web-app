@@ -92,7 +92,7 @@ export default function Dashboard() {
 
             </main>
 
-            <Footer />
+            <Footer footerHeading={"Dashboard"} footerContent={"Use the Cards Above to navigate through the SLPEDF Database"} />
 
         </React.Fragment>
     );
