@@ -5,10 +5,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+
+import Fire from "../../Config/Firebase";
+import Copyright from '../../Components/Copyright/Copyright';
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -34,10 +39,22 @@ export default function Login() {
 
     const classes = useStyles();
 
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
     const onSubmit = (e) => {
+
         e.preventDefault();
-        console.log(e.target.email.value)
-        console.log(e.target.password.value)
+
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        Fire.auth().signInWithEmailAndPassword(email, password)
+            .then(user => {
+                enqueueSnackbar("Welcome User", { variant: 'success' });
+            })
+            .catch(error => {
+                enqueueSnackbar(error.message, { variant: 'error' });
+            });
     }
 
     return (
@@ -101,6 +118,10 @@ export default function Login() {
                 </form>
 
             </div>
+
+            <Box mt={5}>
+                <Copyright />
+            </Box>
 
         </Container>
     );
