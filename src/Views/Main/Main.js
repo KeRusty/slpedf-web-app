@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Landing from '../Landing/Landing';
 import Login from '../Login/Login';
 import Register from "../Register/Register"
+import Dashboard from "../Dashboard/Dashboard"
 
 class Main extends Component {
     constructor(props) {
@@ -22,6 +23,7 @@ class Main extends Component {
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
+                    <Route exact path="/dashboard" component={Dashboard} />
                 </Switch>
             </main>
         );
