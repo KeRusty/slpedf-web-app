@@ -29,16 +29,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const cardData = [
-    { heading: "User Registration", content: "Users can be registered here." },
-    { heading: "Client Registration", content: "Clients can be registered here." },
-    { heading: "Workshops", content: "Manage Ongoing workshops and future workshops here." },
-    { heading: "Donations", content: "Manage Donations from internal and external donors" },
-    { heading: "Events", content: "Manage Events organized by SLPEDF members." },
-    { heading: "Reports", content: "View Reports here." }
+    { heading: "Member Registration", content: "Members can be registered here.", link: "/members/registration" },
+    { heading: "Client Registration", content: "Clients can be registered here.", link: "/dashboard" },
+    { heading: "Workshops", content: "Manage Ongoing workshops and future workshops here.", link: "/dashboard" },
+    { heading: "Donations", content: "Manage Donations from internal and external donors", link: "/dashboard" },
+    { heading: "Events", content: "Manage Events organized by SLPEDF members.", link: "/dashboard" },
+    { heading: "Reports", content: "View Reports here.", link: "/dashboard" }
 ];
 
 
-export default function Dashboard() {
+export default function Dashboard(props) {
     const classes = useStyles();
 
     return (
@@ -46,7 +46,7 @@ export default function Dashboard() {
 
             <CssBaseline />
 
-            <AppNavBar heading={"Dashboard"} />
+            <AppNavBar heading={"Dashboard"} props={props} />
 
             <main>
                 {/* Hero unit */}
