@@ -10,9 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import AppNavBar from "../../Components/AppNavBar/AppNavBar";
-import Copyright from "../../Components/Copyright/Copyright";
-
 const useStyles = makeStyles(theme => ({
     heroContent: {
         backgroundColor: theme.palette.background.paper,
@@ -78,13 +75,7 @@ export default function Cards(props) {
 
                                     <CardActions>
 
-                                        <Button size="small" color="primary">
-                                            View
-                                        </Button>
-
-                                        <Button size="small" color="primary">
-                                            Edit
-                                         </Button>
+                                        <Button size="small" color="primary" href={card.link}>View</Button>
 
                                     </CardActions>
 
